@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mustafa Waly — Portfolio</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0a0a; color: #e8e8e8; font-family: Arial, sans-serif; line-height: 1.7; }
+  .container { max-width: 760px; margin: 0 auto; padding: 60px 24px; }
+  h1 { font-size: 2.4rem; color: #fff; margin-bottom: 4px; }
+  .subtitle { color: #B5841A; font-size: 1rem; margin-bottom: 24px; letter-spacing: 1px; }
+  .bio { color: #aaa; font-size: 0.97rem; margin-bottom: 12px; max-width: 620px; }
+  .contact { margin-bottom: 48px; }
+  .contact a { color: #B5841A; text-decoration: none; margin-right: 20px; font-size: 0.9rem; }
+  .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 56px; }
+  .metric-card { background: #141414; border: 1px solid #222; border-top: 3px solid #B5841A; padding: 20px 16px; }
+  .metric-number { font-size: 1.8rem; font-weight: bold; color: #B5841A; }
+  .metric-label { font-size: 0.8rem; color: #888; margin-top: 4px; line-height: 1.4; }
+  .section { margin-bottom: 56px; }
+  .section-title { font-size: 0.75rem; letter-spacing: 3px; color: #B5841A; text-transform: uppercase; margin-bottom: 24px; border-bottom: 1px solid #222; padding-bottom: 10px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+  .before { background: #1a0a0a; border: 1px solid #3a1a1a; padding: 20px; border-radius: 4px; }
+  .after { background: #0a1a0a; border: 1px solid #1a3a1a; padding: 20px; border-radius: 4px; }
+  .col-label { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; font-weight: bold; }
+  .before .col-label { color: #c0392b; }
+  .after .col-label { color: #27ae60; }
+  .col-text { font-size: 0.9rem; color: #ccc; font-style: italic; }
+  .annotations { margin-top: 16px; }
+  .annotation { font-size: 0.88rem; color: #999; padding: 8px 0 8px 16px; border-left: 2px solid #B5841A; margin-bottom: 8px; }
+  .hook-box { background: #111; border: 1px solid #222; padding: 24px; border-radius: 4px; margin-bottom: 20px; }
+  .hook-original { font-size: 1.1rem; color: #fff; font-style: italic; margin-bottom: 20px; }
+  .layer { padding: 10px 0; border-bottom: 1px solid #1a1a1a; font-size: 0.88rem; color: #bbb; }
+  .layer:last-child { border-bottom: none; }
+  .layer strong { color: #B5841A; }
+  .case-grid { display: grid; grid-template-columns: 140px 1fr; gap: 0; }
+  .case-label { font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: #B5841A; font-weight: bold; padding: 16px 0; border-bottom: 1px solid #1a1a1a; }
+  .case-content { font-size: 0.9rem; color: #ccc; padding: 16px 0 16px 20px; border-bottom: 1px solid #1a1a1a; }
+  .case-label:last-of-type, .case-content:last-of-type { border-bottom: none; }
+  .outcome-stat { color: #B5841A; font-weight: bold; }
+  .cta { text-align: center; padding: 40px 0 0; border-top: 1px solid #222; }
+  .cta h2 { font-size: 1.2rem; color: #fff; margin-bottom: 12px; }
+  .cta a { display: inline-block; color: #B5841A; text-decoration: none; margin: 0 16px; font-size: 0.9rem; border-bottom: 1px solid #B5841A; padding-bottom: 2px; }
+  @media (max-width: 600px) {
+    .metrics { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; }
+    .case-grid { grid-template-columns: 1fr; }
+    .case-label { padding-bottom: 4px; border-bottom: none; }
+    .case-content { padding-left: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <h1>Mustafa Waly</h1>
+  <p class="subtitle">CONTENT STRATEGIST · PERFORMANCE COPYWRITER · CREATIVE DIRECTOR</p>
+  <p class="bio">I engineer conversion-focused content systems for personal brands and e-commerce in Arabic and English. My framework is built on 5+ years of music production — the same hook construction, pacing, and retention mechanics that scaled my music to 13,900+ Spotify streams drive every piece of copy I produce.</p>
+  <div class="contact">
+    <a href="mailto:getwaly@email.com">getwaly@email.com</a>
+    <a href="https://linkedin.com/in/mustafa-waly" target="_blank">LinkedIn</a>
+  </div>
+
+  <!-- METRICS -->
+  <div class="metrics">
+    <div class="metric-card">
+      <div class="metric-number">13,900+</div>
+      <div class="metric-label">Spotify streams — self-released Arabic rap, zero paid promotion</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-number">35%</div>
+      <div class="metric-label">TikTok save-to-like ratio on client content — above platform average</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-number">15–25%</div>
+      <div class="metric-label">CTR lift on paid social ad copy rewrites for personal brand clients</div>
+    </div>
+  </div>
+
+  <!-- ASSET 1: BEFORE / AFTER -->
+  <div class="section">
+    <div class="section-title">Asset 01 — Before / After Hook Rewrite</div>
+    <div class="two-col">
+      <div class="before">
+        <div class="col-label">Before</div>
+        <div class="col-text">[PASTE THE ORIGINAL WEAK CAPTION OR AD HERE]</div>
+      </div>
+      <div class="after">
+        <div class="col-label">After</div>
+        <div class="col-text">[PASTE YOUR REWRITTEN VERSION HERE]</div>
+      </div>
+    </div>
+    <div class="annotations">
+      <div class="annotation">Problem: [اشرح المشكلة في الـ original بالإنجليزي]</div>
+      <div class="annotation">Fix: [اشرح الـ fix اللي عملته وليه]</div>
+      <div class="annotation">Expected impact: [إيه الـ behavioral change المتوقع]</div>
+    </div>
+  </div>
+
+  <!-- ASSET 2: HOOK BREAKDOWN -->
+  <div class="section">
+    <div class="section-title">Asset 02 — Hook Breakdown</div>
+    <div class="hook-box">
+      <div class="hook-original">"[PASTE A HIGH-PERFORMING HOOK HERE — من الـ TikTok بتاع ABZ أو أي content ناجح]"</div>
+      <div class="layer"><strong>Pattern Interrupt:</strong> [اشرح إيه اللي كسر الـ scroll behavior]</div>
+      <div class="layer"><strong>Identity Signal:</strong> [مين اللي حس إن ده بيتكلم عنه]</div>
+      <div class="layer"><strong>Stakes Statement:</strong> [إيه اللي بيكسبه أو بيخسره]</div>
+      <div class="layer"><strong>Open Loop:</strong> [إيه السؤال اللي فضل من غير إجابة]</div>
+    </div>
+  </div>
+
+  <!-- ASSET 3: CASE STUDY -->
+  <div class="section">
+    <div class="section-title">Asset 03 — Performance Case · ABZ Content</div>
+    <div class="case-grid">
+      <div class="case-label">Problem</div>
+      <div class="case-content">Client was running personal brand content with generic openers and benefit-first messaging on cold audiences — no hook structure, no awareness-stage differentiation.</div>
+      <div class="case-label">Decision</div>
+      <div class="case-content">Rewrote content and ad copy strategy around intent-matched hooks and a problem–identity–CTA sequence, with separate copy variants for cold, warm, and retargeting audiences.</div>
+      <div class="case-label">Execution</div>
+      <div class="case-content">Restructured caption copy across 3 content pillars. Rewrote paid ad hooks by audience temperature. Built a brief template enforcing the new structure across all future output.</div>
+      <div class="case-label">Outcome</div>
+      <div class="case-content">Top-performing TikTok: <span class="outcome-stat">6,800+ likes · 2,450+ saves · 35% save-to-like ratio.</span> Paid social CTR improved <span class="outcome-stat">15–25%</span> across restructured campaigns. Revision cycles cut by <span class="outcome-stat">30%</span> within first quarter.</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <h2>Let's work together</h2>
+    <a href="mailto:getwaly@email.com">getwaly@email.com</a>
+    <a href="https://linkedin.com/in/mustafa-waly" target="_blank">LinkedIn</a>
+  </div>
+
+</div>
+</body>
+</html>
