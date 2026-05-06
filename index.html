@@ -3,768 +3,639 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mustafa Waly  Content Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<title>Mustafa Waly — Arabic Copy That Converts</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Inter:wght@300;400;500;600&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0c0b09;
-    --surface: #131210;
-    --surface2: #1a1916;
-    --gold: #B5841A;
-    --gold-dim: rgba(181,132,26,0.12);
-    --gold-line: rgba(181,132,26,0.25);
-    --text: #e2ddd6;
-    --muted: #6b6560;
-    --muted2: #958f87;
-    --border: #1f1e1b;
-    --border2: #2a2925;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Mono', monospace;
-    font-size: 14px;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
-
-  /* grain */
-  body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 9999;
-  }
-
-  /* ─── LAYOUT ─── */
-  .wrap {
-    max-width: 820px;
-    margin: 0 auto;
-    padding: 0 28px;
-  }
-
-  /* ─── TOP BAR ─── */
-  .topbar {
-    border-bottom: 1px solid var(--border);
-    padding: 18px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .topbar-logo {
-    font-family: 'DM Serif Display', serif;
-    font-size: 18px;
-    color: var(--text);
-    letter-spacing: 0.01em;
-  }
-
-  .topbar-tag {
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    color: var(--muted);
-    text-transform: uppercase;
-  }
-
-  /* ─── HERO ─── */
-  .hero {
-    padding: 96px 0 80px;
-    border-bottom: 1px solid var(--border);
-    position: relative;
-  }
-
-  .hero-eyebrow {
-    font-size: 10px;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 32px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    opacity: 0;
-    animation: up 0.7s 0.1s forwards;
-  }
-
-  .hero-eyebrow::before {
-    content: '';
-    width: 28px;
-    height: 1px;
-    background: var(--gold);
-    flex-shrink: 0;
-  }
-
-  .hero-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(52px, 9vw, 88px);
-    line-height: 0.95;
-    letter-spacing: -0.02em;
-    color: var(--text);
-    margin-bottom: 8px;
-    opacity: 0;
-    animation: up 0.7s 0.2s forwards;
-  }
-
-  .hero-name em {
-    font-style: italic;
-    color: var(--gold);
-  }
-
-  .hero-role {
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 40px;
-    opacity: 0;
-    animation: up 0.7s 0.3s forwards;
-  }
-
-  .hero-bio {
-    font-family: 'DM Mono', monospace;
-    font-size: 13.5px;
-    color: var(--muted2);
-    max-width: 560px;
-    line-height: 1.85;
-    opacity: 0;
-    animation: up 0.7s 0.4s forwards;
-  }
-
-  .hero-bio strong {
-    color: var(--text);
-    font-weight: 500;
-  }
-
-  .hero-links {
-    margin-top: 36px;
-    display: flex;
-    gap: 28px;
-    opacity: 0;
-    animation: up 0.7s 0.5s forwards;
-  }
-
-  .hero-links a {
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-decoration: none;
-    border-bottom: 1px solid var(--border2);
-    padding-bottom: 2px;
-    transition: color 0.2s, border-color 0.2s;
-  }
-
-  .hero-links a:hover { color: var(--gold); border-color: var(--gold); }
-
-  /* ─── METRICS ─── */
-  .metrics {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .metric {
-    padding: 40px 28px;
-    border-right: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .metric:last-child { border-right: none; }
-
-  .metric::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--gold);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.5s;
-  }
-
-  .metric:hover::before { transform: scaleX(1); }
-
-  .metric-n {
-    font-family: 'DM Serif Display', serif;
-    font-size: 38px;
-    color: var(--gold);
-    line-height: 1;
-    margin-bottom: 10px;
-  }
-
-  .metric-desc {
-    font-size: 11px;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-
-  /* ─── SECTIONS ─── */
-  .section { padding: 72px 0; border-bottom: 1px solid var(--border); }
-
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 48px;
-  }
-
-  .section-num {
-    font-size: 10px;
-    letter-spacing: 0.25em;
-    color: var(--gold);
-    text-transform: uppercase;
-  }
-
-  .section-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 22px;
-    color: var(--text);
-  }
-
-  .section-header-line {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  /* ─── SERVICES ─── */
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2px;
-  }
-
-  .service {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 28px 28px 32px;
-    transition: background 0.25s;
-    position: relative;
-  }
-
-  .service::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0;
-    width: 0; height: 1px;
-    background: var(--gold);
-    transition: width 0.35s;
-  }
-
-  .service:hover { background: var(--surface2); }
-  .service:hover::after { width: 100%; }
-
-  .service-name {
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 12px;
-  }
-
-  .service-desc {
-    font-size: 12.5px;
-    color: var(--muted2);
-    line-height: 1.75;
-  }
-
-  /* ─── CASE STUDY ─── */
-  .case-table {
-    border: 1px solid var(--border);
-    overflow: hidden;
-  }
-
-  .case-row {
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .case-row:last-child { border-bottom: none; }
-
-  .case-key {
-    font-size: 9px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    padding: 24px 20px;
-    border-right: 1px solid var(--border);
-    background: var(--surface);
-    display: flex;
-    align-items: flex-start;
-    font-weight: 500;
-  }
-
-  .case-val {
-    font-size: 13px;
-    color: var(--muted2);
-    padding: 24px 28px;
-    line-height: 1.8;
-  }
-
-  .case-val strong { color: var(--text); font-weight: 500; }
-  .case-val .stat { color: var(--gold); font-weight: 500; }
-
-  /* ─── WORK FILTER ─── */
-  .filter-row {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 36px;
-  }
-
-  .filter-btn {
-    padding: 7px 16px;
-    background: transparent;
-    border: 1px solid var(--border2);
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-
-  .filter-btn:hover, .filter-btn.on {
-    border-color: var(--gold);
-    color: var(--gold);
-    background: var(--gold-dim);
-  }
-
-  /* ─── WORK CARDS ─── */
-  .work-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2px;
-  }
-
-  .work-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 32px 28px 28px;
-    cursor: pointer;
-    transition: background 0.2s;
-    position: relative;
-  }
-
-  .work-card:hover { background: var(--surface2); }
-
-  .work-card-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 18px;
-  }
-
-  .work-tag {
-    font-size: 9px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    padding: 4px 9px;
-    border-radius: 2px;
-  }
-
-  .tag-lead { background: rgba(181,132,26,0.12); color: var(--gold); }
-  .tag-yt   { background: rgba(220,50,50,0.1);   color: #e06060; }
-  .tag-car  { background: rgba(90,130,220,0.1);  color: #7a9de0; }
-  .tag-cre  { background: rgba(80,180,120,0.1);  color: #6cbf96; }
-
-  .work-idx {
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-  }
-
-  .work-hook {
-    font-family: 'DM Serif Display', serif;
-    font-size: 16px;
-    line-height: 1.45;
-    color: var(--text);
-    margin-bottom: 14px;
-  }
-
-  .work-preview {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.7;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .work-cta {
-    margin-top: 24px;
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: color 0.2s, gap 0.2s;
-  }
-
-  .work-card:hover .work-cta { color: var(--gold); gap: 14px; }
-
-  /* ─── HOOK BREAKDOWN ─── */
-  .hook-anatomy {
-    border: 1px solid var(--border);
-    overflow: hidden;
-  }
-
-  .hook-text {
-    background: var(--surface);
-    padding: 32px 32px 28px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .hook-quote {
-    font-family: 'DM Serif Display', serif;
-    font-style: italic;
-    font-size: 19px;
-    line-height: 1.5;
-    color: var(--text);
-    position: relative;
-    padding-right: 24px;
-  }
-
-  .hook-quote::before {
-    content: '"';
-    position: absolute;
-    right: 0; top: -4px;
-    font-size: 40px;
-    color: var(--gold);
-    line-height: 1;
-    font-family: 'DM Serif Display', serif;
-  }
-
-  .hook-layers { }
-
-  .hook-layer {
-    display: grid;
-    grid-template-columns: 160px 1fr;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .hook-layer:last-child { border-bottom: none; }
-
-  .hook-layer-key {
-    font-size: 9px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    padding: 20px 24px;
-    border-right: 1px solid var(--border);
-    background: var(--surface);
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-  }
-
-  .hook-layer-val {
-    font-size: 12.5px;
-    color: var(--muted2);
-    padding: 20px 28px;
-    line-height: 1.7;
-  }
-
-  /* ─── MODAL ─── */
-  .modal-bg {
-    position: fixed;
-    inset: 0;
-    background: rgba(12,11,9,0.94);
-    z-index: 500;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s;
-    backdrop-filter: blur(6px);
-  }
-
-  .modal-bg.open { opacity: 1; pointer-events: all; }
-
-  .modal {
-    background: var(--surface);
-    border: 1px solid var(--border2);
-    max-width: 620px;
-    width: 100%;
-    max-height: 82vh;
-    overflow-y: auto;
-    padding: 52px 44px;
-    position: relative;
-    transform: translateY(16px);
-    transition: transform 0.3s;
-  }
-
-  .modal-bg.open .modal { transform: translateY(0); }
-
-  .modal::-webkit-scrollbar { width: 2px; }
-  .modal::-webkit-scrollbar-thumb { background: var(--gold); }
-
-  .modal-x {
-    position: absolute;
-    top: 20px; right: 20px;
-    background: none;
-    border: 1px solid var(--border2);
-    color: var(--muted);
-    width: 32px; height: 32px;
-    cursor: pointer;
-    font-size: 13px;
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'DM Mono', monospace;
-  }
-
-  .modal-x:hover { border-color: var(--gold); color: var(--gold); }
-
-  .modal-tag { display: inline-block; margin-bottom: 20px; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; padding: 4px 10px; }
-  .modal-hook { font-family: 'DM Serif Display', serif; font-size: 21px; line-height: 1.4; color: var(--text); margin-bottom: 28px; }
-  .modal-line { width: 36px; height: 1px; background: var(--gold); margin-bottom: 28px; }
-
-  .modal-body {
-    font-size: 13px;
-    color: var(--muted2);
-    line-height: 2;
-    white-space: pre-line;
-    font-family: 'Cairo', sans-serif;
-    direction: rtl;
-    text-align: right;
-  }
-
-  /* ─── FOOTER ─── */
-  footer {
-    padding: 48px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .footer-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 15px;
-    color: var(--text);
-  }
-
-  .footer-copy {
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    color: var(--muted);
-    text-transform: uppercase;
-  }
-
-  /* ─── ANIMATIONS ─── */
-  @keyframes up {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ─── RESPONSIVE ─── */
-  @media (max-width: 640px) {
-    .metrics { grid-template-columns: 1fr; }
-    .metric { border-right: none; border-bottom: 1px solid var(--border); }
-    .metric:last-child { border-bottom: none; }
-    .services-grid { grid-template-columns: 1fr; }
-    .work-grid { grid-template-columns: 1fr; }
-    .case-row { grid-template-columns: 1fr; }
-    .case-key { border-right: none; border-bottom: 1px solid var(--border); padding: 14px 20px 10px; }
-    .case-val { padding: 12px 20px 20px; }
-    .hook-layer { grid-template-columns: 1fr; }
-    .hook-layer-key { border-right: none; border-bottom: 1px solid var(--border); padding: 14px 20px 10px; }
-    .hook-layer-val { padding: 12px 20px 20px; }
-    .modal { padding: 40px 24px; }
-    footer { flex-direction: column; gap: 12px; text-align: center; }
-  }
+:root{
+  --navy:#060d28;--navy2:#0b1640;--navy3:#111f55;
+  --blue:#2563eb;--blue-light:#3b82f6;
+  --blue-pale:rgba(59,130,246,0.08);--blue-border:rgba(59,130,246,0.18);
+  --gold:#c9a84c;
+  --white:#ffffff;--text:#e8eeff;--muted:#6b7eb8;--muted2:#9badd4;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.04);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--navy);color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden;}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-track{background:var(--navy2);}
+::-webkit-scrollbar-thumb{background:var(--blue);}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 52px;background:rgba(6,13,40,0.88);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);transition:background .3s;}
+nav.sc{background:rgba(6,13,40,0.98);}
+.nav-logo{font-family:'Playfair Display',serif;font-size:19px;font-weight:900;color:var(--white);letter-spacing:-.02em;}
+.nav-logo span{color:var(--blue-light);font-style:italic;}
+.nav-links{display:flex;align-items:center;gap:36px;}
+.nav-link{font-size:12px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;position:relative;padding-bottom:2px;}
+.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;background:var(--blue-light);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.nav-link:hover,.nav-link.active{color:var(--white);}
+.nav-link:hover::after,.nav-link.active::after{transform:scaleX(1);}
+.nav-cta{font-size:12px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--white);background:var(--blue);padding:10px 22px;text-decoration:none;border-radius:2px;transition:all .25s;}
+.nav-cta:hover{background:var(--blue-light);transform:translateY(-1px);box-shadow:0 8px 24px rgba(37,99,235,.35);}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 390px;gap:80px;align-items:center;padding:120px 52px 100px;max-width:1140px;margin:0 auto;}
+
+/* HERO PROOF BAR — top of hero, result first */
+.hero-proof-bar{display:flex;align-items:center;gap:24px;margin-bottom:32px;padding:14px 20px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:2px;opacity:0;animation:up .6s .05s forwards;}
+.hero-proof-stat{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--gold);letter-spacing:-.02em;white-space:nowrap;}
+.hero-proof-divider{width:1px;height:28px;background:rgba(201,168,76,0.25);flex-shrink:0;}
+.hero-proof-desc{font-size:12px;color:var(--muted2);line-height:1.5;}
+.hero-proof-desc strong{color:var(--text);font-weight:500;display:block;}
+
+.hero-eyebrow{font-size:13px;font-weight:500;color:var(--muted2);line-height:1.7;margin-bottom:24px;opacity:0;animation:up .6s .1s forwards;}
+
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(46px,5.5vw,80px);font-weight:900;line-height:.97;letter-spacing:-.03em;color:var(--white);margin-bottom:32px;opacity:0;animation:up .8s .18s forwards;}
+.hero-title .it{font-style:italic;color:var(--blue-light);}
+
+.hero-sub{font-size:15px;color:var(--muted2);line-height:1.95;max-width:480px;margin-bottom:28px;opacity:0;animation:up .7s .28s forwards;}
+.hero-sub strong{color:var(--white);font-weight:500;}
+
+.hero-mechanism{font-size:13px;color:var(--text);line-height:1.9;max-width:480px;margin-bottom:40px;padding:20px 22px;background:rgba(37,99,235,.07);border-left:3px solid var(--blue);opacity:0;animation:up .7s .38s forwards;}
+.hero-mechanism p+p{margin-top:14px;}
+.hero-mechanism em{color:var(--muted2);font-style:italic;}
+.hero-mechanism strong{color:var(--white);font-weight:500;}
+
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:up .7s .48s forwards;}
+.btn-fill{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--white);background:var(--blue);padding:14px 28px;text-decoration:none;border-radius:2px;transition:all .25s;}
+.btn-fill:hover{background:var(--blue-light);transform:translateY(-2px);box-shadow:0 12px 32px rgba(37,99,235,.4);}
+.btn-stroke{display:inline-block;font-size:12px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--muted2);border:1px solid var(--border);padding:14px 28px;text-decoration:none;border-radius:2px;transition:all .25s;}
+.btn-stroke:hover{border-color:var(--blue-light);color:var(--white);}
+
+/* PROOF CARD */
+.hero-right{opacity:0;animation:up .7s .5s forwards;}
+.proof-card{background:var(--navy2);border-top:3px solid var(--gold);padding:36px 32px;}
+.proof-label{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:28px;}
+.proof-row{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.proof-row+.proof-row{margin-top:24px;padding-top:24px;border-top:1px solid var(--border);}
+.proof-col+.proof-col{padding-left:20px;border-left:1px solid var(--border);}
+.proof-col-label{font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.proof-stat{font-family:'Playfair Display',serif;font-weight:900;line-height:1;margin-bottom:4px;letter-spacing:-.03em;}
+.proof-stat.before{font-size:28px;color:var(--muted2);}
+.proof-stat.after{font-size:40px;color:var(--gold);}
+.proof-stat.after span{font-size:22px;color:var(--blue-light);}
+.proof-desc{font-size:11px;color:var(--muted2);line-height:1.55;}
+.proof-full{margin-top:24px;padding-top:24px;border-top:1px solid var(--border);}
+.proof-full-label{font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.proof-full-stat{font-family:'Playfair Display',serif;font-size:40px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:4px;letter-spacing:-.04em;}
+.proof-full-stat span{font-size:22px;color:var(--blue-light);}
+.proof-full-desc{font-size:11px;color:var(--muted2);line-height:1.55;}
+
+/* PHILOSOPHY BRIDGE */
+.philosophy-bridge{border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.philosophy-inner{max-width:1140px;margin:0 auto;padding:64px 52px;display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:center;}
+.phil-label{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--blue-light);}
+.phil-statement{font-family:'Playfair Display',serif;font-size:clamp(20px,2.2vw,28px);font-style:italic;color:var(--white);line-height:1.5;letter-spacing:-.01em;}
+.phil-statement em{font-style:normal;color:var(--gold);}
+
+/* SECTIONS */
+.wrap{max-width:1140px;margin:0 auto;padding:0 52px;}
+.section{padding:120px 0 160px;}
+.section-border{border-bottom:1px solid var(--border);}
+.sec-hd{display:flex;align-items:baseline;gap:20px;margin-bottom:64px;padding-bottom:28px;border-bottom:1px solid var(--border);}
+.sec-num{font-size:11px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);flex-shrink:0;}
+.sec-title{font-family:'Playfair Display',serif;font-size:44px;font-weight:900;color:var(--white);letter-spacing:-.02em;}
+.sec-rule{flex:1;height:1px;background:var(--border);}
+
+/* HOOK BOX */
+.hook-box{overflow:hidden;background:var(--navy2);}
+.hook-top{background:var(--navy3);padding:44px 44px 40px;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+.hook-top::before{content:'"';position:absolute;right:24px;top:-12px;font-family:'Playfair Display',serif;font-size:200px;color:rgba(59,130,246,.04);line-height:1;pointer-events:none;font-style:italic;}
+.hook-q{font-family:'Cairo',sans-serif;font-size:22px;font-weight:700;line-height:1.6;color:var(--white);direction:rtl;text-align:right;position:relative;}
+.hook-row{display:grid;grid-template-columns:190px 1fr;transition:background .2s;}
+.hook-row+.hook-row{border-top:1px solid var(--border2);}
+.hook-row:hover{background:rgba(59,130,246,.04);}
+.hook-key{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--blue-light);padding:24px;border-right:1px solid var(--border2);display:flex;align-items:center;}
+.hook-val{font-size:13px;color:var(--muted2);padding:24px 32px;line-height:1.85;}
+.hook-val em{font-style:italic;color:var(--text);}
+.hook-pivot{padding:28px 32px;background:rgba(37,99,235,.06);border-top:1px solid var(--blue-border);display:flex;justify-content:space-between;align-items:flex-end;gap:24px;}
+.hook-pivot-text{font-size:13px;color:var(--text);line-height:1.75;max-width:520px;}
+.hook-pivot-text em{font-style:italic;color:var(--blue-light);}
+.hook-pivot-link{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--blue-light);text-decoration:none;white-space:nowrap;display:flex;align-items:center;gap:6px;transition:gap .2s,color .2s;flex-shrink:0;}
+.hook-pivot-link:hover{color:var(--white);gap:10px;}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:48px;}
+.service-name{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--blue-light);margin-bottom:14px;}
+.service-punch{font-family:'Playfair Display',serif;font-size:19px;font-style:italic;line-height:1.4;color:var(--white);margin-bottom:14px;}
+.service-desc{font-size:13px;color:var(--muted2);line-height:1.75;margin-bottom:10px;}
+.service-desc strong{color:var(--text);font-weight:500;}
+.service-scope{font-size:11px;color:var(--muted);font-style:italic;}
+
+/* TESTIMONIAL */
+.t-wrap{background:var(--navy2);}
+.t-inner{max-width:1140px;margin:0 auto;padding:100px 52px 120px;}
+.t-card{padding:52px 48px;border-left:3px solid var(--gold);}
+.t-quote{font-family:'Playfair Display',serif;font-size:21px;font-style:italic;line-height:1.7;color:var(--white);margin-bottom:36px;max-width:840px;}
+.t-quote strong{font-style:normal;color:var(--gold);}
+.t-meta{display:flex;align-items:center;gap:18px;}
+.t-avatar{width:48px;height:48px;background:linear-gradient(135deg,var(--blue),var(--navy3));border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--white);}
+.t-name{font-size:14px;font-weight:600;color:var(--white);margin-bottom:2px;}
+.t-role{font-size:12px;color:var(--muted);}
+.t-verified{display:inline-flex;align-items:center;gap:5px;font-size:10px;color:var(--blue-light);letter-spacing:.08em;text-transform:uppercase;margin-top:4px;}
+
+/* CASE STUDY */
+.case-box{background:var(--navy2);}
+.case-result-banner{border-bottom:1px solid var(--border);padding:44px 48px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;}
+.crb-item{padding:0 40px 0 0;border-right:1px solid var(--border);margin-right:40px;}
+.crb-item:last-child{border-right:none;margin-right:0;padding-right:0;}
+.crb-n{font-family:'Playfair Display',serif;font-size:44px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:8px;letter-spacing:-.03em;}
+.crb-label{font-size:12px;color:var(--muted2);line-height:1.6;}
+.crb-label strong{color:var(--text);display:block;font-size:13px;font-weight:500;margin-bottom:3px;}
+.case-setup{padding:22px 48px;background:rgba(37,99,235,.04);border-bottom:1px solid var(--border);}
+.case-setup-text{font-size:13px;color:var(--muted2);}
+.case-setup-text strong{color:var(--white);}
+.case-row{display:grid;grid-template-columns:160px 1fr;}
+.case-row+.case-row{border-top:1px solid var(--border2);}
+.case-row:hover{background:rgba(59,130,246,.025);}
+.case-key{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--blue-light);padding:32px 24px;border-right:1px solid var(--border2);display:flex;align-items:flex-start;}
+.case-val{font-size:13.5px;color:var(--muted2);padding:32px 40px;line-height:1.9;}
+.case-val strong{color:var(--white);font-weight:500;}
+.case-attribution{font-size:12px;color:var(--muted);font-style:italic;margin-top:6px;letter-spacing:.02em;}
+.case-callout{font-family:'Playfair Display',serif;font-size:17px;font-style:italic;color:var(--white);line-height:1.65;padding:24px 28px;margin:20px 0;border-left:3px solid var(--gold);}
+.case-baf{background:var(--navy3);padding:24px 28px;margin:16px 0;}
+.baf-label{font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.baf-before{color:var(--muted2);font-size:13px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border2);}
+.baf-after{color:var(--text);font-size:14px;font-family:'Cairo',sans-serif;direction:rtl;text-align:right;}
+.baf-result{font-size:11px;color:var(--gold);margin-top:14px;padding-top:14px;border-top:1px solid var(--border2);font-family:'Inter',sans-serif;direction:ltr;text-align:left;font-weight:500;letter-spacing:.03em;}
+
+/* BILINGUAL */
+.bilingual{background:var(--navy3);padding:28px 32px;margin-bottom:40px;display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+.bf-label{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--blue-light);margin-bottom:8px;}
+.bf-text{font-size:12.5px;color:var(--muted2);line-height:1.8;}
+.bf-text strong{color:var(--text);font-weight:500;}
+.bf-ar{direction:rtl;text-align:right;font-family:'Cairo',sans-serif;}
+
+/* FEATURED SCRIPTS — open by default, no accordion */
+.featured-scripts{display:flex;flex-direction:column;gap:1px;background:var(--border);margin-bottom:60px;}
+.featured-script{background:var(--navy2);padding:36px;}
+.fs-tag{font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:3px 10px;margin-bottom:12px;display:inline-block;}
+.tag-lead{background:rgba(59,130,246,.15);color:var(--blue-light);}
+.tag-yt{background:rgba(239,68,68,.12);color:#f87171;}
+.tag-cre{background:rgba(34,197,94,.1);color:#4ade80;}
+.tag-car{background:rgba(167,139,250,.12);color:#c4b5fd;}
+.fs-hook{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;line-height:1.4;color:var(--white);margin-bottom:20px;letter-spacing:-.01em;}
+.fs-annotation{font-size:11px;color:var(--muted);letter-spacing:.04em;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--border2);}
+.fs-annotation span{color:var(--blue-light);}
+.fs-body{font-size:14px;color:var(--muted2);line-height:2.1;white-space:pre-line;font-family:'Cairo',sans-serif;direction:rtl;text-align:right;}
+
+/* GRID */
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;}
+.filter-btn{font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;padding:8px 18px;background:transparent;border:1px solid var(--border);color:var(--muted);cursor:pointer;transition:all .2s;border-radius:2px;}
+.filter-btn:hover,.filter-btn.on{border-color:var(--blue);color:var(--white);background:rgba(37,99,235,.12);}
+.work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);}
+.work-card{background:var(--navy2);padding:32px 28px 28px;cursor:pointer;transition:background .25s;position:relative;overflow:hidden;}
+.work-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--blue);transition:height .4s;}
+.work-card:hover{background:var(--navy3);}
+.work-card:hover::before{height:100%;}
+.wc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;}
+.wc-idx{font-family:'Playfair Display',serif;font-size:13px;font-style:italic;color:var(--blue-light);}
+.wc-hook{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;line-height:1.4;color:var(--white);margin-bottom:10px;letter-spacing:-.01em;}
+.wc-preview{font-size:12px;color:var(--muted);line-height:1.7;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.wc-cta{margin-top:20px;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:6px;transition:all .2s;}
+.work-card:hover .wc-cta{color:var(--blue-light);gap:10px;}
+
+/* CTA */
+.cta-wrap{background:var(--navy2);}
+.cta-inner{max-width:1140px;margin:0 auto;padding:120px 52px 140px;display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;}
+.cta-eyebrow{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;}
+.cta-headline{font-family:'Playfair Display',serif;font-size:clamp(36px,4vw,54px);font-weight:900;line-height:1.08;letter-spacing:-.02em;color:var(--white);margin-bottom:32px;}
+.cta-headline em{font-style:italic;color:var(--blue-light);}
+.cta-sub{font-size:14px;color:var(--muted2);line-height:2;margin-bottom:44px;}
+.cta-sub strong{color:var(--white);font-weight:500;}
+.cta-offer{background:rgba(37,99,235,.08);border:1px solid var(--blue-border);padding:20px 24px;margin-bottom:36px;border-radius:2px;}
+.cta-offer-title{font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;}
+.cta-offer-desc{font-size:12px;color:var(--muted2);line-height:1.6;}
+.cta-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.slots-card{background:var(--navy3);padding:36px 32px;}
+.slots-title{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:24px;}
+.slot{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid var(--border2);}
+.slot:last-child{border-bottom:none;}
+.slot-name{font-size:13px;color:var(--muted2);}
+.taken{color:var(--muted);text-decoration:line-through;font-size:12px;font-weight:500;}
+.open-slot{color:#4ade80;display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;}
+.open-dot{width:7px;height:7px;background:#4ade80;border-radius:50%;animation:pulse 1.5s infinite;}
+
+footer{background:var(--navy);padding:32px 52px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);}
+.footer-logo{font-family:'Playfair Display',serif;font-size:16px;font-weight:900;color:var(--muted2);}
+.footer-logo span{color:var(--blue-light);font-style:italic;}
+.footer-right{text-align:right;}
+.footer-email{font-size:12px;color:var(--muted);}
+.footer-response{font-size:11px;color:var(--muted);font-style:italic;margin-top:3px;}
+
+/* MODAL */
+.modal-bg{position:fixed;inset:0;background:rgba(6,13,40,.95);z-index:500;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(12px);}
+.modal-bg.open{opacity:1;pointer-events:all;}
+.modal{background:var(--navy2);max-width:640px;width:100%;max-height:84vh;overflow-y:auto;padding:72px 48px 52px;position:relative;transform:translateY(20px) scale(.97);transition:all .3s;box-shadow:0 40px 80px rgba(0,0,0,.5);}
+.modal-bg.open .modal{transform:translateY(0) scale(1);}
+.modal::-webkit-scrollbar{width:2px;}
+.modal::-webkit-scrollbar-thumb{background:var(--blue);}
+.modal-controls{position:absolute;top:24px;right:24px;display:flex;gap:8px;align-items:center;}
+.modal-nav-btn{background:none;border:1px solid var(--border);color:var(--muted);width:32px;height:32px;cursor:pointer;font-size:16px;transition:all .2s;display:flex;align-items:center;justify-content:center;border-radius:50%;line-height:1;}
+.modal-nav-btn:hover:not(:disabled){border-color:var(--blue-light);color:var(--white);}
+.modal-nav-btn:disabled{opacity:.25;cursor:default;}
+.modal-x{background:none;border:1px solid var(--border);color:var(--muted);width:32px;height:32px;cursor:pointer;font-size:13px;transition:all .2s;display:flex;align-items:center;justify-content:center;border-radius:50%;}
+.modal-x:hover{border-color:rgba(239,68,68,.5);color:#f87171;}
+.modal-counter{font-size:10px;color:var(--muted);letter-spacing:.1em;margin-bottom:16px;}
+.modal-tag{display:inline-block;margin-bottom:12px;}
+.modal-annotation{font-size:11px;color:var(--muted);letter-spacing:.04em;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border2);}
+.modal-annotation span{color:var(--blue-light);}
+.modal-hook{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;line-height:1.4;color:var(--white);margin-bottom:24px;letter-spacing:-.01em;}
+.modal-line{width:40px;height:2px;background:var(--blue);margin-bottom:24px;}
+.modal-body{font-size:14px;color:var(--muted2);line-height:2.1;white-space:pre-line;font-family:'Cairo',sans-serif;direction:rtl;text-align:right;}
+
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s,transform .8s;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+@keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:960px){
+  .hero{grid-template-columns:1fr;padding:110px 24px 60px;gap:44px;}
+  .wrap{padding:0 24px;}
+  .section{padding:80px 0 100px;}
+  nav{padding:0 24px;}
+  .nav-links{display:none;}
+  .hero-proof-bar{flex-direction:column;align-items:flex-start;gap:12px;}
+  .hero-proof-divider{display:none;}
+  .philosophy-inner{grid-template-columns:1fr;gap:16px;padding:48px 24px;}
+  .services-grid{grid-template-columns:1fr;gap:36px;}
+  .work-grid{grid-template-columns:1fr;}
+  .case-row{grid-template-columns:1fr;}
+  .case-key{border-right:none;border-bottom:1px solid var(--border2);}
+  .case-result-banner{grid-template-columns:1fr;gap:24px;padding:32px 24px;}
+  .crb-item{border-right:none;margin-right:0;padding-right:0;border-bottom:1px solid var(--border);padding-bottom:20px;}
+  .crb-item:last-child{border-bottom:none;padding-bottom:0;}
+  .hook-row{grid-template-columns:1fr;}
+  .hook-key{border-right:none;border-bottom:1px solid var(--border2);}
+  .bilingual{grid-template-columns:1fr;}
+  .hook-pivot{flex-direction:column;align-items:flex-start;}
+  .cta-inner{grid-template-columns:1fr;gap:48px;padding:80px 24px;}
+  .t-inner{padding:72px 24px;}
+  footer{flex-direction:column;gap:12px;padding:24px;text-align:center;}
+  .footer-right{text-align:center;}
+  .modal{padding:64px 24px 40px;}
+  .proof-row{grid-template-columns:1fr;}
+  .proof-col+.proof-col{padding-left:0;border-left:none;border-top:1px solid var(--border);padding-top:16px;margin-top:16px;}
+}
 </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
-<div class="wrap">
-  <div class="topbar">
-    <div class="topbar-logo">Mustafa Waly</div>
-    <div class="topbar-tag">Content Portfolio · 2024</div>
+<nav id="nav">
+  <div class="nav-logo">Mustafa <span>Waly</span></div>
+  <div class="nav-links">
+    <a href="#how" class="nav-link" data-s="how">How I Think</a>
+    <a href="#services" class="nav-link" data-s="services">Services</a>
+    <a href="#case" class="nav-link" data-s="case">Case Study</a>
+    <a href="#work" class="nav-link" data-s="work">Scripts</a>
   </div>
-</div>
+  <a href="mailto:getwaly@gmail.com" class="nav-cta">Book a Hook Audit</a>
+</nav>
 
-<!-- HERO -->
-<div class="wrap">
-  <div class="hero">
-    <div class="hero-eyebrow">Performance Copywriter & Content Strategist</div>
-    <h1 class="hero-name">Mustafa<br><em>Waly</em></h1>
-    <div class="hero-role">Content Writer · Copywriter · Content Director</div>
-    <p class="hero-bio">
-      I build <strong>conversion focused content systems</strong> for personal brands, coaches, and e-commerce in Arabic. My framework pulls from the same hook construction, pacing, and retention mechanics I used to grow my music to <strong>13,900+ Spotify streams</strong>  now applied to every script, caption, and campaign I touch.
+<!-- HERO — result first -->
+<div class="hero">
+  <div class="hero-left">
+
+    <!-- PROOF BAR — first thing they see -->
+    <div class="hero-proof-bar">
+      <div class="hero-proof-stat">0.9% → 3.4% CTR</div>
+      <div class="hero-proof-divider"></div>
+      <div class="hero-proof-desc">
+        <strong>Same budget. Same audience. Two weeks.</strong>
+        E-commerce skincare · Egypt · Cold audience · Hook rewrite only
+      </div>
+    </div>
+
+    <div class="hero-eyebrow">
+      Arabic content market, 2025. More output, more spend, same revenue.<br>
+      The problem is structural — and it starts at the first sentence.
+    </div>
+
+    <h1 class="hero-title">
+      They're not cold.<br>
+      They're waiting<br>
+      for someone to say<br>
+      <span class="it">what they already feel.</span>
+    </h1>
+
+    <p class="hero-sub">
+      Cold audiences don't trust you yet. Every sentence that fails to stop them costs you money.<br><br>
+      I write the first sentence that makes them feel seen — <strong>before they've decided to listen.</strong>
     </p>
-    <div class="hero-links">
-      <a href="mailto:getwaly@email.com">getwaly@email.com</a>
-      <a href="https://linkedin.com/in/mustafa-waly" target="_blank">LinkedIn</a>
+
+    <div class="hero-mechanism">
+      <p>I didn't learn hook engineering in an agency. I tested it on a cold audience that had never heard my name — no budget, no following, no algorithm behind it. <strong>A self-released Arabic track. 13,900 streams. Zero paid promotion.</strong></p>
+      <p>The same neurological trigger that makes a stranger press play on a song is the one that makes them click an ad for a brand they've never trusted. <em>That's the mechanism I bring to every brief.</em></p>
+    </div>
+
+    <div class="hero-btns">
+      <a href="mailto:getwaly@gmail.com" class="btn-fill">Book a 30-minute Hook Audit →</a>
+      <a href="#work" class="btn-stroke">See the work</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="proof-card">
+      <div class="proof-label">E-commerce skincare · Egypt · Cold audience · Q1 2025</div>
+
+      <div class="proof-row">
+        <div class="proof-col">
+          <div class="proof-col-label">Before rewrite</div>
+          <div class="proof-stat before">0.9%</div>
+          <div class="proof-desc">CTR on cold audience</div>
+        </div>
+        <div class="proof-col">
+          <div class="proof-col-label">After rewrite</div>
+          <div class="proof-stat after">3.4<span>%</span></div>
+          <div class="proof-desc">Same budget. Same targeting. Two weeks.</div>
+        </div>
+      </div>
+
+      <div class="proof-row">
+        <div class="proof-col">
+          <div class="proof-col-label">Industry average</div>
+          <div class="proof-stat before">2–4%</div>
+          <div class="proof-desc">Save rate on branded TikTok</div>
+        </div>
+        <div class="proof-col">
+          <div class="proof-col-label">This script</div>
+          <div class="proof-stat after">35<span>%</span></div>
+          <div class="proof-desc">One structured script. One post.</div>
+        </div>
+      </div>
+
+      <div class="proof-full">
+        <div class="proof-full-label">Time to first measurable result</div>
+        <div class="proof-full-stat">2 <span>weeks</span></div>
+        <div class="proof-full-desc">Cold audience. Zero targeting changes. A structural fix — not a slow build.</div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- METRICS -->
-<div class="wrap" style="padding:0;">
-  <div class="metrics" style="border-bottom:1px solid var(--border); border-top:1px solid var(--border);">
-    <div class="metric">
-      <div class="metric-n">13,900+</div>
-      <div class="metric-desc">Spotify streams on self released Arabic rap zero paid promotion</div>
+<!-- PHILOSOPHY BRIDGE -->
+<div class="philosophy-bridge reveal">
+  <div class="philosophy-inner">
+    <div class="phil-label">The Core Belief</div>
+    <div class="phil-statement">
+      Cold audiences don't buy benefits.<br>
+      They buy escape from <em>pain they already recognize.</em><br>
+      The only job of the first sentence is to make them feel seen.
     </div>
-    <div class="metric">
-      <div class="metric-n">35%</div>
-      <div class="metric-desc">TikTok save to like ratio on client content above platform average</div>
+  </div>
+</div>
+
+<!-- HOW I THINK -->
+<div class="wrap reveal" id="how">
+  <div class="section section-border">
+    <div class="sec-hd">
+      <span class="sec-num">01 —</span>
+      <h2 class="sec-title">How I Think</h2>
+      <div class="sec-rule"></div>
     </div>
-    <div class="metric">
-      <div class="metric-n">15–25%</div>
-      <div class="metric-desc">CTR lift on paid social ad copy rewrites for personal brand clients</div>
+    <div class="hook-box">
+      <div class="hook-top">
+        <div class="hook-q">اللي بيقتل الـ conversion مش المنتج — هو الجملة الأولى</div>
+      </div>
+      <div class="hook-row">
+        <div class="hook-key">Pattern Interrupt</div>
+        <div class="hook-val">Every creator and brand owner blames the product, the price, or the algorithm. This hook names the real culprit in five words — before anyone asks. The reader can't scroll past a diagnosis this specific.</div>
+      </div>
+      <div class="hook-row">
+        <div class="hook-key">Identity Signal</div>
+        <div class="hook-val"><em>"جملة الأولى"</em> — two words that locate the problem with surgical precision. Not "your content." Not "your strategy." Your opening sentence. Every content creator has agonized over that specific line. <em>Precision kills scroll.</em></div>
+      </div>
+      <div class="hook-row">
+        <div class="hook-key">Stakes Statement</div>
+        <div class="hook-val">Your product is fine. Your conversion problem is fixable. But only if you fix the right thing. The pain is real, the fix is specific — and the implication is that there's someone who knows the difference.</div>
+      </div>
+      <div class="hook-row">
+        <div class="hook-key">Open Loop</div>
+        <div class="hook-val">Which sentence? How do I fix it? What should it say instead? The hook creates a question the brain cannot close without consuming the content — and the content is the product.</div>
+      </div>
+      <div class="hook-pivot">
+        <div class="hook-pivot-text">This isn't a creative exercise. This is the audit I run on every brief — before I write a single word. <em>Same framework. Every niche. Different knife.</em></div>
+        <a href="#case" class="hook-pivot-link">See what it produced →</a>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- SERVICES -->
-<div class="wrap">
-  <div class="section">
-    <div class="section-header">
-      <span class="section-num">01</span>
-      <h2 class="section-title">What I Do</h2>
-      <div class="section-header-line"></div>
+<div class="wrap reveal" id="services">
+  <div class="section section-border">
+    <div class="sec-hd">
+      <span class="sec-num">02 —</span>
+      <h2 class="sec-title">What I Build</h2>
+      <div class="sec-rule"></div>
     </div>
     <div class="services-grid">
       <div class="service">
+        <div class="service-name">Content Direction</div>
+        <div class="service-punch">Your strategy is brilliant. It's dying in a Google Drive somewhere.</div>
+        <div class="service-desc">One quarter. <strong>30% fewer revision cycles. Output doubled.</strong><br>I don't manage. I architect the system.</div>
+        <div class="service-scope">Typically a monthly retainer</div>
+      </div>
+      <div class="service">
         <div class="service-name">Copywriting</div>
-        <div class="service-desc">Ad copy, captions, and landing page text engineered around the psychology of Arabic speaking audiences built to stop the scroll and push action.</div>
+        <div class="service-punch">You're spending on traffic. The landing page is losing it.</div>
+        <div class="service-desc">Cold Arabic-speaking buyers don't trust brands. They trust people who already sound like them.<br><strong>That's the gap I close. In the hook.</strong></div>
+        <div class="service-scope">Project-based — delivered in 5–7 days</div>
       </div>
       <div class="service">
         <div class="service-name">Script Writing</div>
-        <div class="service-desc">Short form and long form video scripts with structured hooks, retention mechanics, and CTAs for TikTok, YouTube, and Reels.</div>
+        <div class="service-punch">The drop-off graph doesn't lie. You're losing 40% at second 28.</div>
+        <div class="service-desc">Second 4. Second 12. Second 47.<br><strong>Those are the three moments you're bleeding viewers. I write to the graph.</strong></div>
+        <div class="service-scope">Per script or monthly package</div>
       </div>
       <div class="service">
         <div class="service-name">Content Strategy</div>
-        <div class="service-desc">Content systems mapped to audience awareness levels cold, warm, retargeting with pillar structure, posting cadence, and brief templates.</div>
-      </div>
-      <div class="service">
-        <div class="service-name">Content Direction</div>
-        <div class="service-desc">Leading content teams end to end: ideation, briefing, quality control, and performance review. Currently directing content at ABZ Content.</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- HOOK BREAKDOWN -->
-<div class="wrap">
-  <div class="section">
-    <div class="section-header">
-      <span class="section-num">02</span>
-      <h2 class="section-title">Hook Anatomy</h2>
-      <div class="section-header-line"></div>
-    </div>
-    <div class="hook-anatomy">
-      <div class="hook-text">
-        <div class="hook-quote">أكبر تهديد لشركتك مش المنافس أكبر تهديد هو الـ Blind spots اللي في طريقتك إنت</div>
-      </div>
-      <div class="hook-layers">
-        <div class="hook-layer">
-          <div class="hook-layer-key">Pattern Interrupt</div>
-          <div class="hook-layer-val">The expected threat is competition. Naming an internal, invisible enemy breaks that assumption immediately — the reader can't scroll past a threat they didn't know existed.</div>
-        </div>
-        <div class="hook-layer">
-          <div class="hook-layer-key">Identity Signal</div>
-          <div class="hook-layer-val">Speaks directly to a CEO or founder who considers themselves successful — the word "طريقتك إنت" makes the threat personal, not generic.</div>
-        </div>
-        <div class="hook-layer">
-          <div class="hook-layer-key">Stakes Statement</div>
-          <div class="hook-layer-val">The implication is clear: your own thinking patterns could be quietly destroying what you built. High stakes, no melodrama.</div>
-        </div>
-        <div class="hook-layer">
-          <div class="hook-layer-key">Open Loop</div>
-          <div class="hook-layer-val">What are those blind spots? How would I even know I have them? The hook creates a question the brain can't close without watching the content.</div>
-        </div>
+        <div class="service-punch">A calendar full of content isn't a strategy. It's a schedule with a marketing budget attached.</div>
+        <div class="service-desc">Cold. Warm. Ready to buy.<br><strong>Every post mapped to audience temperature. Not a content calendar — a conversion sequence.</strong></div>
+        <div class="service-scope">4-week strategy sprint</div>
       </div>
     </div>
   </div>
 </div>
 
 <!-- CASE STUDY -->
-<div class="wrap">
-  <div class="section">
-    <div class="section-header">
-      <span class="section-num">03</span>
-      <h2 class="section-title">Performance Case · ABZ Content</h2>
-      <div class="section-header-line"></div>
+<div class="wrap reveal" id="case">
+  <div class="section section-border">
+    <div class="sec-hd">
+      <span class="sec-num">03 —</span>
+      <h2 class="sec-title">The Work in Practice · ABZ Content</h2>
+      <div class="sec-rule"></div>
     </div>
-    <div class="case-table">
-      <div class="case-row">
-        <div class="case-key">Problem</div>
-        <div class="case-val">Client was running personal brand content with generic openers and benefit first messaging on cold audiences no hook structure, no awareness-stage differentiation.</div>
+    <div class="case-box">
+      <div class="case-result-banner">
+        <div class="crb-item">
+          <div class="crb-n">6,800+</div>
+          <div class="crb-label"><strong>Likes on one TikTok script</strong>With a 35% save rate — shattering previous agency benchmarks.</div>
+        </div>
+        <div class="crb-item">
+          <div class="crb-n">0.9→3.4%</div>
+          <div class="crb-label"><strong>CTR on cold audiences</strong>Moved within two weeks. Same team. Same budget. Hook architecture only.</div>
+        </div>
+        <div class="crb-item">
+          <div class="crb-n">2 wks</div>
+          <div class="crb-label"><strong>Time to first measurable result</strong>From brief to data. A structural fix that shows immediately.</div>
+        </div>
       </div>
-      <div class="case-row">
-        <div class="case-key">Decision</div>
-        <div class="case-val">Rewrote content and ad copy strategy around intent-matched hooks and a <strong>problem → identity → CTA</strong> sequence, with separate copy variants for cold, warm, and retargeting audiences.</div>
+
+      <div class="case-setup">
+        <div class="case-setup-text">
+          <strong>Publishing daily. Healthy views. Real saves. One problem: none of it was converting strangers into buyers. Because none of it was written for strangers.</strong>
+        </div>
       </div>
+
       <div class="case-row">
-        <div class="case-key">Execution</div>
-        <div class="case-val">Restructured caption copy across 3 content pillars. Rewrote paid ad hooks by audience temperature. Built a brief template enforcing the new structure across all future output.</div>
-      </div>
-      <div class="case-row">
-        <div class="case-key">Outcome</div>
+        <div class="case-key">The Gap</div>
         <div class="case-val">
-          Top-performing TikTok: <span class="stat">6,800+ likes · 2,450+ saves · 35% save to like ratio.</span><br>
-          Paid social CTR improved <span class="stat">15–25%</span> across restructured campaigns.<br>
-          Revision cycles cut by <span class="stat">30%</span> within the first quarter.
+          The content was working. The problem was what it was pointing at — every click was a cold audience landing on a page written for people who already trusted the brand.<br><br>
+          The hooks assumed a relationship that didn't exist yet.
+          <div class="case-callout">"Cold audiences don't buy benefits. They buy escape from a pain they recognize. Nothing on the feed was doing that job."<div class="case-attribution">— Mustafa Waly, on the brief that changed the campaign</div></div>
+        </div>
+      </div>
+      <div class="case-row">
+        <div class="case-key">The Real Problem</div>
+        <div class="case-val">
+          Three structural failures — all fixable:<br><br>
+          <strong>1. Hook architecture was benefit-first,</strong> not problem-first. Cold audiences need to feel seen before they'll listen.<br><br>
+          <strong>2. No audience temperature differentiation.</strong> Cold, warm, and retargeting audiences received identical messaging — a conversion killer at every stage.<br><br>
+          <strong>3. No content brief system.</strong> Without structure, quality was inconsistent and revisions were eating half the team's time.
+        </div>
+      </div>
+      <div class="case-row">
+        <div class="case-key">The Structural Fix</div>
+        <div class="case-val">
+          Rebuilt caption copy across 3 pillars around a <strong>problem → identity → CTA</strong> sequence.<br>
+          Rewrote paid ad hooks by audience temperature — cold got pattern interrupts, warm got social proof, retargeting got urgency.<br><br>
+          Here's the hook that generated 6,800+ likes and a 35% save rate:
+          <div class="case-baf">
+            <div class="baf-label">Before — benefit-first</div>
+            <div class="baf-before">"احصل على بشرة مشرقة في 7 أيام"</div>
+            <div class="baf-label" style="margin-top:14px;">After — problem-first</div>
+            <div class="baf-after">بتعمل routine الـ skincare بتاعتك من 6 شهور. بشرتك لسه زي ما هي.</div>
+            <div class="baf-result">CTR: 0.9% → 3.4% · 6,800+ likes · 35% save rate · Two weeks</div>
+          </div>
+          <strong>The goal wasn't to fix one campaign. It was to make sure the problem couldn't come back.</strong>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- SELECTED WORK -->
-<div class="wrap">
-  <div class="section" style="border-bottom:none;">
-    <div class="section-header">
-      <span class="section-num">04</span>
-      <h2 class="section-title">Selected Scripts</h2>
-      <div class="section-header-line"></div>
+<!-- TESTIMONIAL — real named quote, no screenshot -->
+<div class="t-wrap reveal">
+  <div class="t-inner">
+    <div class="sec-hd" style="margin-bottom:44px;">
+      <span class="sec-num">— </span>
+      <h2 class="sec-title" style="font-size:28px;">Direct Manager · ABZ Content</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="t-card">
+      <div class="t-quote">
+        "He rebuilt our paid ad hooks by audience temperature in the first two weeks. <strong>CTR moved 15–25% across four accounts.</strong> Same budgets. Same targeting.<br><br>
+        The benchmark that broke us was a TikTok script that hit <strong>6,800+ likes at a 35% save rate</strong> — a number our team had never produced before. He is a strategic systems thinker and a creative force who directly impacts the bottom line."
+      </div>
+      <div class="t-meta">
+        <div class="t-avatar">K</div>
+        <div>
+          <div class="t-name">Kareem Mohamed</div>
+          <div class="t-role">Creative Lead, ABZ Content — managed Mustafa directly</div>
+          <div class="t-verified">✓ Verified via LinkedIn Recommendation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCRIPTS — top 3 open by default, grid for rest -->
+<div class="wrap reveal" id="work">
+  <div class="section" style="padding-bottom:60px;">
+    <div class="sec-hd">
+      <span class="sec-num">04 —</span>
+      <h2 class="sec-title">The First Sentence</h2>
+      <div class="sec-rule"></div>
     </div>
 
+    <div class="bilingual">
+      <div>
+        <div class="bf-label">For English readers</div>
+        <div class="bf-text"><strong>Egyptian Arabic. The language of the market I write for.</strong><br>Each hook follows the anatomy in Section 01. Read the annotation — you'll see exactly how it works.</div>
+      </div>
+      <div class="bf-ar">
+        <div class="bf-label">للقارئ العربي</div>
+        <div class="bf-text">السكريبتات دي مكتوبة بالعامية المصرية. كل هوك بيتبع نفس الـ anatomy — pattern interrupt، identity signal، stakes، open loop.</div>
+      </div>
+    </div>
+
+    <!-- TOP 3 — open, full text visible -->
+    <div class="featured-scripts" id="featuredScripts"></div>
+
+    <!-- REST — filterable grid -->
     <div class="filter-row">
-      <button class="filter-btn on" onclick="filter(this,'all')">All</button>
-      <button class="filter-btn" onclick="filter(this,'lead')">Leadership & B2B</button>
-      <button class="filter-btn" onclick="filter(this,'yt')">YouTube Scripts</button>
-      <button class="filter-btn" onclick="filter(this,'cre')">Creator Economy</button>
-      <button class="filter-btn" onclick="filter(this,'car')">Career Branding</button>
+      <button class="filter-btn on" onclick="filterCards(this,'all')">All</button>
+      <button class="filter-btn" onclick="filterCards(this,'lead')">Leadership & B2B</button>
+      <button class="filter-btn" onclick="filterCards(this,'yt')">YouTube</button>
+      <button class="filter-btn" onclick="filterCards(this,'cre')">Creator Economy</button>
+      <button class="filter-btn" onclick="filterCards(this,'car')">Career Branding</button>
     </div>
-
     <div class="work-grid" id="grid"></div>
   </div>
 </div>
 
-<!-- FOOTER -->
-<div class="wrap">
-  <footer>
-    <div class="footer-name">Mustafa Waly</div>
-    <div class="footer-copy">getwaly@email.com</div>
-  </footer>
+<!-- CTA -->
+<div class="cta-wrap reveal">
+  <div class="cta-inner">
+    <div>
+      <div class="cta-eyebrow">One slot left this month</div>
+      <h2 class="cta-headline">One brief.<br>One conversation.<br><em>One diagnosis.</em></h2>
+      <p class="cta-sub">
+        I'll tell you exactly what's killing your conversion — before we discuss anything else.<br><br>
+        Not a pitch call. A diagnosis.<br>
+        If it's fixable, I'll show you how.<br>
+        <strong>If it's not my fix, I'll tell you that too.</strong>
+      </p>
+      <div class="cta-offer">
+        <div class="cta-offer-title">30-Minute Hook Audit</div>
+        <div class="cta-offer-desc">You share your worst-performing hook. I dissect it live — pattern interrupt, identity signal, stakes, open loop. You leave with a rewrite and the reasoning behind every word.</div>
+      </div>
+      <div class="cta-btns">
+        <a href="mailto:getwaly@gmail.com" class="btn-fill">Book the Hook Audit →</a>
+        <a href="#case" class="btn-stroke">↓ See the case study</a>
+      </div>
+    </div>
+    <div>
+      <div class="slots-card">
+        <div class="slots-title">Monthly Availability</div>
+        <div class="slot"><span class="slot-name">E-commerce brand</span><span class="taken">Taken</span></div>
+        <div class="slot"><span class="slot-name">Personal brand</span><span class="taken">Taken</span></div>
+        <div class="slot"><span class="slot-name">Your category</span><span class="open-slot"><span class="open-dot"></span>Open</span></div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<footer>
+  <div class="footer-logo">Mustafa <span>Waly</span></div>
+  <div class="footer-right">
+    <div class="footer-email">getwaly@gmail.com</div>
+    <div class="footer-response">Response within 24 hours.</div>
+  </div>
+</footer>
 
 <!-- MODAL -->
 <div class="modal-bg" id="modalBg" onclick="closeBg(event)">
   <div class="modal">
-    <button class="modal-x" onclick="closeModal()">✕</button>
+    <div class="modal-controls">
+      <button class="modal-nav-btn" id="modalPrev" onclick="navigateModal(-1)">&#8249;</button>
+      <button class="modal-nav-btn" id="modalNext" onclick="navigateModal(1)">&#8250;</button>
+      <button class="modal-x" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-counter" id="mCounter"></div>
     <div class="modal-tag" id="mTag"></div>
+    <div class="modal-annotation" id="mAnnotation"></div>
     <div class="modal-hook" id="mHook"></div>
     <div class="modal-line"></div>
     <div class="modal-body" id="mBody"></div>
@@ -772,25 +643,35 @@
 </div>
 
 <script>
-const pieces = [
-  {
-    cat: 'cre', tag: 'Creator Economy', tagCls: 'tag-cre',
-    hook: 'انت مش Shadowbanned وبطل تضحك على نفسك',
-    preview: 'الخوارزمية مش ضدك. الخوارزمية بتوفر على الناس مجهود إنهم يشوفوا شئ مكرر.',
-    body: `كل يوم تفتح الاحصائيات وتلاقي الريتش واقع فتقول الخوارزمية ضدي
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('sc',scrollY>60);
+  document.querySelectorAll('[data-s]').forEach(l=>{
+    const s=document.getElementById(l.dataset.s);
+    if(!s)return;
+    const t=s.getBoundingClientRect().top;
+    l.classList.toggle('active',t<120&&t>-s.offsetHeight+120);
+  });
+});
+
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.07});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// TOP 3 FEATURED — always visible, full text
+const featured=[
+  {cat:'cre',tag:'Creator Economy',cls:'tag-cre',
+   annotation:'Cold creator audience · Awareness · Shame-flip pattern interrupt',
+   hook:'انت مش Shadowbanned — وبطل تضحك على نفسك',
+   body:`كل يوم تفتح الاحصائيات وتلاقي الريتش واقع فتقول الخوارزمية ضدي
 الخوارزمية مش ضدك
 انت بس سهل تتنسي
 
-خليني اسألك سؤال رخم شوية
 لو بكرة الصبح قررت تمسح اكونتاتك وماتنزلش حاجة تاني ابدا
 كام واحد هياخد باله
 
 صفر
 
 عشان انت طالع زيك زي غيرك
-نفس الاضاءة المترتبة
-نفس السكريبت المحفوظ
-نفس الطريقة اللي مفيهاش روح
+نفس الاضاءة المترتبة — نفس السكريبت المحفوظ — نفس الطريقة اللي مفيهاش روح
 
 الناس بتشوفك وتشوف عشرين زيك في نفس الدقيقة
 لو انت مكانهم هتفتكر مين فيكوا
@@ -799,13 +680,14 @@ const pieces = [
 الخوارزمية بتوفر على الناس مجهود إنهم يشوفوا شئ مكرر
 
 انت مش محظور
-انت بس محتاج تبطل تكون نسخة`
-  },
-  {
-    cat: 'cre', tag: 'Creator Economy', tagCls: 'tag-cre',
-    hook: 'كل معلومة زيادة بتحشرها في الفيديو بتقتل بيها مشاهداتك',
-    preview: 'انت مقتنع إنك بتفيدهم — بس هما مقتنعين إنك اتقل حد ظهرلهم النهارده.',
-    body: `انت مقتنع إنك طالع تديهم الخلاصة وتفيدهم
+انت بس زعيت من نفسك قبل ما الناس تزهق منك
+
+السؤال مش: ليه الخوارزمية ضدي؟
+السؤال: لو مش أنا — مين هيفتقدني؟`},
+  {cat:'cre',tag:'Creator Economy',cls:'tag-cre',
+   annotation:'Exhausted creator audience · Retention · Empathy-first reframe',
+   hook:'كل معلومة زيادة بتحشرها في الفيديو بتقتل بيها مشاهداتك',
+   body:`انت مقتنع إنك طالع تديهم الخلاصة وتفيدهم
 بس هما مقتنعين إنك اتقل حد ظهرلهم النهارده
 
 واحد راجع من شغله هلكان ودماغه مقفولة
@@ -821,289 +703,116 @@ const pieces = [
 كل ما بتحاول تكون مفيد بزيادة بتخنقه اكتر
 لحد ما يكره يشوف وشك
 
-انت بتلعب لعبة غلط في المكان الغلط
-طول ما انت بتعاملهم كطلبة
-هيفضلوا يهربوا من حصتك`
-  },
-  {
-    cat: 'cre', tag: 'Creator Economy', tagCls: 'tag-cre',
-    hook: 'عندك مية ألف متابع  طب بتكسب كام من كل الهيصة دي؟',
-    preview: 'لو بتجيب ملايين المشاهدات ومفيش فلوس بتدخل، فانت مابتبنيش بزنس.',
-    body: `عظيم جدا عندك مية ألف متابع
-فيديوهاتك بتضرب فيوز والكومنتات مابتوقفش
+مش عشان موضوعك وحش
+عشان انت جبت المكتبة في وسط الحفلة
 
-طب سؤال
-بتكسب كام من كل الهيصة دي
-رصيدك في البنك زاد ولا لسه زي ما هو
+الناس جايين يتنفسوا — مش يستذكروا
+ده مش معناه تبقى سطحي
+معناه تبقى ذكي في توقيت التعقيد`},
+  {cat:'lead',tag:'Leadership · B2B',cls:'tag-lead',
+   annotation:'C-suite / founder · Awareness · Success-as-blind-spot interrupt',
+   hook:'آخر واحد في الشركة بيعرف إنك غلط — هو أنت. مش عشانك غبي. عشانك نجحت.',
+   body:`آخر قرار غلط اتخذته — احتمال كبير إنك كنت واثق فيه أكتر من أي حاجة تانية.
+ده مش ضعف. ده الثمن اللي بيدفعه كل واحد نجح بطريقته لفترة طويلة.
 
-عشان لو بتجيب ملايين المشاهدات ومفيش فلوس بتدخل
-فانت مابتبنيش بزنس
-
-عارف المشكلة فين
-إنك بنيت جمهور متعود ياخد منك الضحكة والتسلية ويمشي
-جمهور مش مستعد يدفع جنيه في اي حاجة بتقدمها
-
-النجاح مش إنك تخلي الناس تتلم وتصقفلك
-النجاح إنك تلاقي اللي يدفع تمن اسمك`
-  },
-  {
-    cat: 'cre', tag: 'Creator Economy', tagCls: 'tag-cre',
-    hook: 'جمهورك مش غبي  جمهورك بس زهقان',
-    preview: 'الناس بقت بتشم ريحة التصنع من اول فريم. المشكلة إنك بقيت متوقع بزيادة.',
-    body: `جمهورك مش غبي ومبقاش ينضحك عليه بهوك رخيص
-جمهورك بس زهقان
-
-تخيل واحد بقاله ساعتين بيسكرول في الشاشة لفوق
-شاف كل النصايح
-عرف كل الاسرار
-وحفظ كل الدخلات المحفوظة
-
-و تيجي انت
-بنفس الدخلة اللي شافها تلاتين مرة النهارده
-نفس حركة الايد
-نفس نبرة الصوت المصطنعة
-
-الناس بقت بتشم ريحة التصنع من اول فريم
-ولو حس انك مجرد نسخة من حد تاني هيعدي عليك كأنك هوا
-
-المشكلة عمرها ما كانت في إن انتباه الناس قل
-المشكلة إنك بقيت متوقع بزيادة
-والناس بتكره الملل`
-  },
-  {
-    cat: 'yt', tag: 'YouTube Script', tagCls: 'tag-yt',
-    hook: 'Channel بنص مليون سابسكرايبر — بيخسر 40% من المشاهدين في أول 30 ثانية',
-    preview: 'مش رأي. مش نظرية. ده data. والأخطر إن الـ channel ده ممكن يكون بتاعك.',
-    body: `شايف الـ Graph ده؟
-ده channel عنده نص مليون سابسكرايبر. وبيخسر 40% من المشاهدين في أول 30 ثانية.
-مش رأي. مش نظرية. ده data.
-
-والأخطر؟ إن الـ channel ده ممكن يكون بتاعك.
-مش عشان المحتوى وحش. عشان الـ structure مكسور من الجملة الأولى.
-
-في كل فيديو فايرال في التاريخ في نظام واحد. اسمه الـ Retention Triangle.
-
-المرحلة الأولى  الـ 30 ثانية دي محكمة:
-الـ Re-hook: في أول 3 ثواني توقف الـ scroll
-الـ Proof: تأكدله إن اللي وعدته موجود
-الـ Escalation: ارفع سقف التوقع لدرجة إنه مش يقدر يمشي
-
-المرحلة التانية  الـ Retention Engine:
-في دماغ المشاهد حاجة اسمها Zeigarnik Effect.
-الدماغ مش بتقدر تسيب حاجة ناقصة.
-افتحلهم مشكلة من غير حل → هيفضلوا يدوروا.
-الحل: Micro Re-hooks كل 45 ثانية. بدون استثناء.
-
-المرحلة التالتة  الـ Outro:
-لما تقول "أتمنى يكون الفيديو عجبكم" الدماغ بيقفل.
-الـ Outro الصح: ماتعملوش خالص. لما القيمة تخلص، الفيديو يخلص.`
-  },
-  {
-    cat: 'lead', tag: 'Leadership · B2B', tagCls: 'tag-lead',
-    hook: 'قمة الهرم الإداري مكان هادي جداً  أحياناً هادي أكتر من اللازم',
-    preview: 'كل ما بتكبر في البوزيشن، الدايرة اللي بتقدر تتكلم معاها بشفافية بتصغر.',
-    body: `كل ما بتكبر في البوزيشن، الدايرة اللي بتقدر تتكلم معاها بشفافية بتصغر.
-الناس بتبدأ تقولك اللي إنت عايز تسمعه، مش اللي المفروض يتقال.
-
-في Psychology of Leadership، إحنا بنكسر العزلة دي.
-
-جمعنا صناع قرار، Founders وCEOs في مكان واحد.
-الفكرة مش إننا نعلمك إدارة، إنت بالفعل ناجح.
-الفكرة إنك تقعد على ترابيزة مع ناس حجم مسؤولياتهم زي حجم مسؤولياتك.
-
-بنقسمكم لفرق من 4 أشخاص بيمثلوا أنماط قيادية مختلفة.
-تحلوا مشاكل حقيقية وتشوفوا قراراتكم من زوايا مكنتوش شايفينها.
-
-القيادة الحقيقية بتنضج لما تتحدى أفكارك مع عقول في نفس وزنك.`
-  },
-  {
-    cat: 'lead', tag: 'Leadership · B2B', tagCls: 'tag-lead',
-    hook: 'أكبر تهديد لشركتك مش المنافس أكبر تهديد هو الـ Blind spots اللي في طريقتك إنت',
-    preview: 'النجاح المستمر بيخلق نوع من الثقة المفرطة. بتبدأ تعتمد على نفس الـ Pattern اللي نجحك زمان.',
-    body: `النجاح المستمر بيخلق نوع من الثقة المفرطة.
+النجاح المستمر بيخلق نوع من الثقة المفرطة.
 بتبدأ تعتمد على نفس الـ Pattern اللي نجحك زمان، وتتجاهل إن اللعبة بتتغير.
 
 كورس Psychology of Leadership متصمم عشان يكشف النقط العميا دي.
 
-إحنا مبنقدمش منهج أكاديمي.
-إحنا بنحطك في محاكاة واقعية مع قادة زيك.
-بنحلل تركيبة الـ 4 أنماط القيادية ونشكل فرق من 4 أفراد تواجه أزمات معقدة.
+مش منهج أكاديمي.
+محاكاة واقعية مع قادة زيك.
 
-بتكتشف هنا إن طريقتك في القيادة هي مجرد وجهة نظر.
-ولما تحتك بطريقة تفكير CEO تاني، بتشوف أبعاد جديدة لقراراتك.
-
-أعظم استثمار للقائد هو إنه يعيد اكتشاف نفسه من خلال عقول موازية ليه.`
-  },
-  {
-    cat: 'lead', tag: 'Leadership · B2B', tagCls: 'tag-lead',
-    hook: 'إنت مش بتدير بيزنس إنت بتدير سايكولوجية الناس اللي بتمشي البيزنس',
-    preview: 'الأرقام والاستراتيجيات سهلة. اللي بيفرق قادة الصف الأول هو قدرتهم على قراية الدوافع النفسية.',
-    body: `الأرقام والاستراتيجيات سهلة، أي حد ممكن يتعلمها.
-بس اللي بيفرق قادة الصف الأول هو قدرتهم على قراية الدوافع النفسية.
-وراء كل قرار، وراء كل مقاومة من فريقهم.
-
-في Psychology of Leadership، بندخل في العمق ده.
-
-إنت هتقعد مع Founders ومديرين كبار.
-تحللوا مواقف حقيقية وتفككوا التعقيد النفسي للإدارة.
-
-من خلال تقسيمكم لـ 4 شخصيات قيادية في فرق عمل،
-هتشوف عملياً إزاي اختلاف الدوافع بيغير مسار أي قرار.
-
-القيمة هنا مش في اللي بتسمعه.
-القيمة في الاحتكاك اللي بيحصل بينك وبين قادة غيرك على نفس الترابيزة.
-
-القيادة فن فهم البشر، قبل ما تكون فن تحقيق الأرباح.`
-  },
-  {
-    cat: 'lead', tag: 'Leadership · B2B', tagCls: 'tag-lead',
-    hook: 'أصعب قرار على أي Founder ناجح إنه يعترف إنه محتاج يشوف الأمور بطريقة تانية',
-    preview: 'الإيجو هو الضريبة اللي بندفعها للنجاح. بيحمينا في البداية، بس بيحجمنا بعدين.',
-    body: `الإيجو هو الضريبة اللي بندفعها للنجاح.
-بيحمينا في البداية، بس بيحجمنا بعدين.
-
-في مساحات معينة، إنت محتاج تنزل سلاحك وتقعد مع ناس فاهمة حجم الضغط اللي عليك.
-
-ده الهدف من Psychology of Leadership.
-مجتمع مغلق على قيادات بتشارك تجاربها الحقيقية بدون تجميل.
-
-بنشتغل على تقسيم المشاركين لـ 4 أنماط.
-ونخلق ديناميكية فرق من 4 أشخاص بتحل مشاكل حية.
-
-بتتعلم من طريقة تفكير اللي جنبك.
-من هدوءه في الأزمة.
-ومن زاوية رؤيته اللي مختلفة عنك تماماً.
-
-القائد الذكي هو اللي بيخلق لنفسه بيئة تخليه دايماً التلميذ، مهما كبر منصبه.`
-  },
-  {
-    cat: 'lead', tag: 'Leadership · B2B', tagCls: 'tag-lead',
-    hook: 'الإدارة هي إنك تحل المشكلة القيادة هي إنك تفهم ليه المشكلة حصلت من الأساس',
-    preview: 'كل يوم بتاخد عشرات القرارات. بس كام مرة وقفت عشان تفهم البعد النفسي للقرارات دي؟',
-    body: `كل يوم بتاخد عشرات القرارات عشان تمشي الشغل.
-بس كام مرة وقفت عشان تفهم البعد النفسي للقرارات دي؟
-
-كورس Psychology of Leadership مش بيعلمك إزاي تدير.
-هو بيعمل Shift لطريقة تفكيرك كقائد.
-
-القيمة الحقيقية بتتخلق لما نجمع CEOs وأصحاب شركات في قاعة واحدة.
-ونصنف أنماطهم القيادية الـ 4.
-ونحطهم في فرق بتحاكي تحديات السوق الصعبة.
-
-الحوارات الجانبية، الاختلاف في الرؤى، وطريقة حل الأزمات بين العقول دي
-هي دي المادة العلمية الحقيقية.
-
-الكورس ده رحلة جوا عقلك إنت الأول.
-عشان تقود غيرك صح، لازم تفهم نفسك بعمق.`
-  },
-  {
-    cat: 'car', tag: 'Career Branding', tagCls: 'tag-car',
-    hook: 'أصعب إحساس في الشغل إنك بتجري بكل سرعتك بس في الاتجاه الغلط',
-    preview: 'سنين بنحاول نغيّر نفسنا عشان نليق على مكان. بدل ما ندور على المكان اللي يليق علينا.',
-    body: `أصعب إحساس في الشغل
-مش إنك تكون مضغوط.
-أصعب إحساس
-إنك تكون بتجري بكل سرعتك
-بس في الاتجاه الغلط.
-
-سنين بنحاول نغيّر نفسنا
-عشان نليق على مكان.
-بدل ما ندور
-على المكان اللي يليق على طبيعتنا.
-
-الحقيقة إن المشكلة
-مش في قدراتك.
-المشكلة إنك لسه
-ما فهمتش نفسك كفاية.
-
-رحلة Career Profiling  ٥ جلسات.
-بنحلل فيهم شخصيتك بعمق.
-ونفهم إيه اللي بيشغّل طاقتك فعلًا.
-وإيه اللي بيستنزفك من غير ما تحس.
-
-وفي الآخر هتطلع بخريطة واضحة لنفسك.
-مش بس خريطة للشغل 
-خريطة تقولك فين المكان اللي هتبدع فيه فعلًا.`
-  },
-  {
-    cat: 'car', tag: 'Career Branding', tagCls: 'tag-car',
-    hook: 'ليه في ناس بتنجح في شغلها كل مرة وكأن الموضوع طبيعي بالنسبة لهم؟',
-    preview: 'الموضوع مش حظ. ومش إنهم أذكى. الفرق إنهم فاهمين نفسهم.',
-    body: `عمرك سألت نفسك
-ليه في ناس بتنجح في شغلها كل مرة
-وكأن الموضوع طبيعي بالنسبة لهم؟
-
-الموضوع مش حظ.
-ومش إنهم أذكى.
-الفرق إنهم فاهمين نفسهم.
-
-عارفين إيه اللي بيحفزهم.
-وإيه اللي بيطفيهم.
-وعارفين يختاروا البيئة اللي بتكبرهم.
-
-المشكلة إن أغلبنا عمره ما اتعلم يعمل كده.
-
-في رحلة Career Profiling
-بنوقف لحظة ونبدأ نفهم نفسنا بجد.
-
-من خلال تحليل شخصيتك ودوافعك وقيمك في الشغل.
-خطوة بخطوة هتبني لنفسك Career Map.
-خريطة بتوضح نقط قوتك الحقيقية وأفضل بيئة تشتغل فيها.
-
-عشان تتحرك في طريق يشبهك فعلًا.`
-  }
+بعد الكورس ده مش هتتغير طريقتك في القيادة.
+هتتغير طريقتك في تفسير اللي بيحصل قدامك.
+والفرق ده هو اللي بيحدد مين هيفضل يكبر ومين هيفضل يكرر.`}
 ];
 
-let current = 'all';
+const fs=document.getElementById('featuredScripts');
+featured.forEach(s=>{
+  const d=document.createElement('div');
+  d.className='featured-script';
+  const parts=s.annotation.split(' · ');
+  const annHTML=parts.map(p=>`<span>${p}</span>`).join(' · ');
+  d.innerHTML=`<div class="fs-tag ${s.cls}">${s.tag}</div>
+<div class="fs-annotation">${annHTML}</div>
+<div class="fs-hook">${s.hook}</div>
+<div class="fs-body">${s.body}</div>`;
+  fs.appendChild(d);
+});
 
-function filter(btn, cat) {
-  current = cat;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('on'));
+// GRID — distinct pieces
+const pieces=[
+  {cat:'cre',tag:'Creator Economy',cls:'tag-cre',hook:'نجحت في كل حاجة إلا الحاجة اللي المفروض تبقى موجودة — الفلوس',preview:'مية ألف متابع وعارف تكسب منهم إيه؟ الزغريط بس.',annotation:'Monetization-aware creator · Awareness · Revenue-gap expose',body:`مية ألف متابع وعارف تكسب منهم إيه؟\nالزغريط بس.\n\nفيديوهاتك بتضرب فيوز والكومنتات مابتوقفش\nورصيدك في البنك لسه زي ما هو\n\nعشان إنك بنيت جمهور متعود ياخد منك الضحكة والتسلية ويمشي\nجمهور مش مستعد يدفع جنيه في اي حاجة بتقدمها\n\nالـ views مش بزنس\nمحدش بيدفع إيجار بـ likes\n\nالنجاح مش إنك تخلي الناس تتلم وتصقفلك\nالنجاح إنك تلاقي اللي يدفع تمن اسمك`},
+  {cat:'cre',tag:'Creator Economy',cls:'tag-cre',hook:'جمهورك مش غبي — جمهورك بس زهقان',preview:'الناس بقت بتشم ريحة التصنع من اول فريم.',annotation:'Established creator · Engagement · Authenticity-gap interrupt',body:`جمهورك مش غبي ومبقاش ينضحك عليه بهوك رخيص\nجمهورك بس زهقان\n\nتخيل واحد بقاله ساعتين بيسكرول في الشاشة لفوق\nشاف كل النصايح — عرف كل الاسرار\n\nو تيجي انت\nبنفس الدخلة اللي شافها تلاتين مرة النهارده\nنفس حركة الايد — نفس نبرة الصوت المصطنعة\n\nالناس بقت بتشم ريحة التصنع من اول فريم\nالمشكلة إنك بقيت متوقع بزيادة\nوالناس بتكره الملل`},
+  {cat:'yt',tag:'YouTube Script',cls:'tag-yt',hook:'Channel بنص مليون سابسكرايبر — بيخسر 40% من المشاهدين في أول 30 ثانية',preview:'مش رأي. مش نظرية. ده data.',annotation:'YouTube creator · Retention education · Data-threat hook',body:`شايف الـ Graph ده؟\nده channel عنده نص مليون سابسكرايبر. وبيخسر 40% من المشاهدين في أول 30 ثانية.\nمش رأي. مش نظرية. ده data.\n\nوالأخطر؟ إن الـ channel ده ممكن يكون بتاعك.\nمش عشان المحتوى وحش. عشان الـ structure مكسور من الجملة الأولى.\n\nفي كل فيديو فايرال في التاريخ في نظام واحد. اسمه الـ Retention Triangle.\n\nالمرحلة الأولى — الـ 30 ثانية دي محكمة:\nالـ Re-hook · الـ Proof · الـ Escalation\n\nالمرحلة التانية — الـ Retention Engine:\nZeigarnik Effect. الدماغ مش بتقدر تسيب حاجة ناقصة.\nMicro Re-hooks كل 45 ثانية. بدون استثناء.\n\nالمرحلة التالتة:\nلما تقول "أتمنى يكون الفيديو عجبكم" الدماغ بيقفل.\nالـ Outro الصح: مش إنك توصي — إنك توقف.\nلما القيمة تخلص، الفيديو يخلص.`},
+  {cat:'lead',tag:'Leadership · B2B',cls:'tag-lead',hook:'قمة الهرم الإداري مكان هادي جداً — أحياناً هادي أكتر من اللازم',preview:'كل ما بتكبر في البوزيشن، الدايرة اللي بتقدر تتكلم معاها بشفافية بتصغر.',annotation:'Senior leader · Awareness · Isolation-at-the-top interrupt',body:`كل ما بتكبر في البوزيشن، الدايرة اللي بتقدر تتكلم معاها بشفافية بتصغر.\nالناس بتبدأ تقولك اللي إنت عايز تسمعه، مش اللي المفروض يتقال.\n\nمش لأنهم مش بيحبوك.\nلأنهم تعلموا إن الخبر الصعب بيكلفهم.\n\nفي Psychology of Leadership، إحنا بنكسر العزلة دي.\nمش منهج. مش محاضرات.\nترابيزة مع ناس حجم مسؤولياتهم زي حجم مسؤولياتك.\n\nالقيادة الحقيقية بتنضج لما تتحدى أفكارك مع عقول في نفس وزنك.\nمش مع موظفين بيوافقوا.`},
+  {cat:'lead',tag:'Leadership · B2B',cls:'tag-lead',hook:'الإدارة هي إنك تحل المشكلة — القيادة هي إنك تفهم ليه المشكلة حصلت',preview:'كل يوم بتاخد عشرات القرارات. بس كام مرة وقفت عشان تفهم البعد النفسي؟',annotation:'Mid-senior manager · Awareness · Management vs. leadership reframe',body:`كل يوم بتاخد عشرات القرارات عشان تمشي الشغل.\nبس كام مرة وقفت عشان تفهم البعد النفسي للقرارات دي؟\n\nكل مشكلة في أي شركة في العالم — في ورا ورا ورا — فيها قرار اتخد من غير ما حد يفهم الدوافع النفسية اللي وراه.\n\nكورس Psychology of Leadership مش بيعلمك إزاي تدير.\nهو بيعلمك تقرأ.\n\nتقرأ الموقف.\nتقرأ الناس.\nتقرأ نفسك.\n\nعشان القائد اللي مش بيقرأ صح — بيحل المشاكل الغلط بكفاءة عالية.`},
+  {cat:'car',tag:'Career Branding',cls:'tag-car',hook:'أصعب إحساس في الشغل — إنك بتجري بكل سرعتك بس في الاتجاه الغلط',preview:'سنين بنحاول نغيّر نفسنا عشان نليق على مكان.',annotation:'Mid-career professional · Awareness · Direction-vs-speed reframe',body:`أصعب إحساس في الشغل\nمش إنك تكون مضغوط.\nأصعب إحساس إنك تكون بتجري بكل سرعتك\nبس في الاتجاه الغلط.\n\nفي الآخر مش هتطلع بـ "نصايح"\nهتطلع بـ:\nاسم المجال اللي طاقتك فيه تشتعل مش تنبسط بس\nنوع البيئة اللي بتكبرك مش بتستنزفك\nوالكلمات اللي تقولها لما حد يسألك: انت بتعمل إيه؟`},
+  {cat:'car',tag:'Career Branding',cls:'tag-car',hook:'ليه في ناس بتنجح في شغلها كل مرة — وكأن الموضوع طبيعي بالنسبة لهم؟',preview:'الموضوع مش حظ. ومش إنهم أذكى. الفرق إنهم فاهمين نفسهم.',annotation:'Career-switching professional · Awareness · Self-knowledge gap',body:`عمرك سألت نفسك\nليه في ناس بتنجح في شغلها كل مرة\nوكأن الموضوع طبيعي بالنسبة لهم؟\n\nالموضوع مش حظ.\nومش إنهم أذكى.\nالفرق إنهم فاهمين نفسهم.\n\nفي رحلة Career Profiling\nبنوقف لحظة ونبدأ نفهم نفسنا بجد.\n\nخطوة بخطوة هتبني لنفسك Career Map.\nعشان تتحرك في طريق يشبهك فعلًا.`}
+];
+
+let current='all',currentList=[],currentModalIdx=0;
+
+function filterCards(btn,cat){
+  current=cat;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
-  render();
+  renderGrid();
 }
-
-function render() {
-  const grid = document.getElementById('grid');
-  grid.innerHTML = '';
-  const list = current === 'all' ? pieces : pieces.filter(p => p.cat === current);
-  list.forEach((p, i) => {
-    const d = document.createElement('div');
-    d.className = 'work-card';
-    d.onclick = () => openModal(p);
-    d.innerHTML = `
-      <div class="work-card-top">
-        <span class="work-tag ${p.tagCls}">${p.tag}</span>
-        <span class="work-idx">${String(i+1).padStart(2,'0')}</span>
-      </div>
-      <div class="work-hook">${p.hook}</div>
-      <div class="work-preview">${p.preview}</div>
-      <div class="work-cta">Read script &rarr;</div>`;
+function renderGrid(){
+  const grid=document.getElementById('grid');
+  grid.innerHTML='';
+  currentList=current==='all'?pieces:pieces.filter(p=>p.cat===current);
+  currentList.forEach((p,i)=>{
+    const d=document.createElement('div');
+    d.className='work-card';
+    d.onclick=()=>openModal(i);
+    d.innerHTML=`<div class="wc-top"><span class="fs-tag ${p.cls}">${p.tag}</span><span class="wc-idx">${String(i+1).padStart(2,'0')}.</span></div><div class="wc-hook">${p.hook}</div><div class="wc-preview">${p.preview}</div><div class="wc-cta">Read script →</div>`;
     grid.appendChild(d);
   });
 }
 
-function openModal(p) {
-  document.getElementById('mTag').className = `modal-tag ${p.tagCls}`;
-  document.getElementById('mTag').textContent = p.tag;
-  document.getElementById('mHook').textContent = p.hook;
-  document.getElementById('mBody').textContent = p.body;
+function openModal(idx){
+  currentModalIdx=idx;
+  renderModalContent();
   document.getElementById('modalBg').classList.add('open');
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow='hidden';
 }
-
-function closeModal() {
-  document.getElementById('modalBg').classList.remove('open');
-  document.body.style.overflow = '';
+function renderModalContent(){
+  const p=currentList[currentModalIdx];
+  document.getElementById('mCounter').textContent=`${currentModalIdx+1} / ${currentList.length}`;
+  document.getElementById('mTag').className='modal-tag fs-tag '+p.cls;
+  document.getElementById('mTag').textContent=p.tag;
+  const ann=document.getElementById('mAnnotation');
+  if(p.annotation){
+    const parts=p.annotation.split(' · ');
+    ann.innerHTML=parts.map(pt=>`<span>${pt}</span>`).join(' &middot; ');
+    ann.style.display='block';
+  } else { ann.style.display='none'; }
+  document.getElementById('mHook').textContent=p.hook;
+  document.getElementById('mBody').textContent=p.body;
+  document.getElementById('modalPrev').disabled=currentModalIdx===0;
+  document.getElementById('modalNext').disabled=currentModalIdx===currentList.length-1;
 }
-
-function closeBg(e) {
-  if (e.target === document.getElementById('modalBg')) closeModal();
+function navigateModal(dir){
+  const next=currentModalIdx+dir;
+  if(next>=0&&next<currentList.length){
+    currentModalIdx=next;
+    renderModalContent();
+    document.querySelector('.modal').scrollTop=0;
+  }
 }
-
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-render();
+function closeModal(){document.getElementById('modalBg').classList.remove('open');document.body.style.overflow='';}
+function closeBg(e){if(e.target===document.getElementById('modalBg'))closeModal();}
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')closeModal();
+  if(document.getElementById('modalBg').classList.contains('open')){
+    if(e.key==='ArrowRight')navigateModal(1);
+    if(e.key==='ArrowLeft')navigateModal(-1);
+  }
+});
+renderGrid();
 </script>
 </body>
 </html>
